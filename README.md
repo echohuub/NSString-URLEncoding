@@ -36,16 +36,23 @@ Or you can include `#import "NSString+URLEncoding.h"` in your prefix header file
   UIBarButtonItem *someButtonItem         = [[UIBarButtonItem alloc] initWithCustomView:someButton];
   self.navigationItem.rightBarButtonItems = @[someButtonItem];
 }
+```
 
+In example, we want to parse UITextView's text which is Markdown to Fanstatical.
+
+Fanstatical URL scheme:
+`fantastical://parse?sentence=sentence&notes=[your note].`
+
+```objective-c
 - (IBAction)openURLScheme:(id)sender
 {
-  NSURL *urlScheme = [NSURL urlWithString:[NSString stringWithFormat:@"myawesomeapp://task/create?title=%@&text=%@", encodedTitle, myAwesomeEncodedString]];
-  if ([UIApplication sharedApplication] canOpenURL:[NSURL urlWithString:@"myawesomeapp://"]) {
+  NSURL *urlScheme = [NSURL urlWithString:[NSString stringWithFormat:@"fantastical://parse?sentence=%@&notes=%@", encodedTitle, myAwesomeEncodedString]];
+  if ([UIApplication sharedApplication] canOpenURL:[NSURL urlWithString:@"fantastical://"]) {
     [[UIApplication sharedApplication] openURL:urlScheme];
   }
 
   NSLog(@"urlScheme: %@", urlScheme); 
-  // urlScheme: myawesomeapp%3A%2F%2Ftask%2Fcreate%3Ftitle%3DSome%20Random%20Thoughts%26text%3D%23What%20a%20day%23%2C%20*I*%20feel%20**inspired**%20and%20%23%23%23motivated%23%23%23!
+  // urlScheme: fantastical%3A%2F%2Ftask%2Fcreate%3Ftitle%3DSome%20Random%20Thoughts%26text%3D%23What%20a%20day%23%2C%20*I*%20feel%20**inspired**%20and%20%23%23%23motivated%23%23%23!
 }
 
 ```
