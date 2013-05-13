@@ -2,7 +2,9 @@ NSString-URLEncoding
 ====================
 
 A (very) small category to Percent Encoding a given string, also known as URL encoding.
-Useful for encoding a string, eg: Markdown, then parse it in a url, so you can open it in URL scheme in your app.
+
+Useful for encoding a string, eg: Markdown, then parse it in a `NSURL`, so you can open it in URL scheme in your app.
+
 *If you are new about this, please see: http://en.wikipedia.org/wiki/Percent-encoding.*
 
 ## Include ##
@@ -20,12 +22,19 @@ Or you can include `#import "NSString+URLEncoding.h"` in your prefix header file
   [super viewDidLoad];
     
   NSString *someThoughts = @"Some Random Thoughts";
-  NSString *myAwesomeString = @"#What a day#, *I* feel **inspired** and ###motivated###!`; // eg: a markdown string
+  NSString *myAwesomeString = @"#What a day#, *I* feel **inspired** and ###motivated###!"; // eg: a markdown string
 
   NSString *encodedTitle = [someThoughts stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
   NSString *myAwesomeEncodedString = [titleString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
 
-  // ...
+  UIButton *someButton                    = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 44, 44)];
+  [someButton setImage:[UIImage imageNamed:@"some-icon"] forState:UIControlStateNormal];
+  [someButton setShowsTouchWhenHighlighted:TRUE];
+  [someButton addTarget:self
+                  action:@selector(openURLScheme:)
+        forControlEvents:UIControlEventTouchDown];
+  UIBarButtonItem *someButtonItem         = [[UIBarButtonItem alloc] initWithCustomView:someButton];
+  self.navigationItem.rightBarButtonItems = @[someButtonItem];
 }
 
 - (IBAction)openURLScheme:(id)sender
