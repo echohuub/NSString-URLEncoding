@@ -7,6 +7,24 @@ Useful for encoding a string, eg: Markdown, then parse it in a `NSURL`, so you c
 
 *If you are new about this, please see: http://en.wikipedia.org/wiki/Percent-encoding.*
 
+## What's inside ##
+
+Don't smile,
+
+```objective-c
+- (NSString *)urlEncodeUsingEncoding:(NSStringEncoding)encoding 
+{
+  return (NSString *)CFBridgingRelease(CFURLCreateStringByAddingPercentEscapes(NULL,
+                                                               (CFStringRef)self,
+                                                               NULL,
+                                                               (CFStringRef)@"!*'\"();:@&=+$,/?%#[]% ",
+                                                               CFStringConvertNSStringEncodingToEncoding(encoding)));
+}
+
+yeah, that's it!
+
+```
+
 ## Include ##
 
 Simply include `NSString+URLEncoding.h` in your class in which you want to use the category. 
