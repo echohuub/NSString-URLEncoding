@@ -9,7 +9,6 @@ Useful for encoding a string, eg: Markdown, then parse it in a `NSURL`, so you c
 
 ## What's inside ##
 
-Don't smile,
 
 ```objective-c
 - (NSString *)urlEncodeUsingEncoding:(NSStringEncoding)encoding 
@@ -20,10 +19,9 @@ Don't smile,
                                                                (CFStringRef)@"!*'\"();:@&=+$,/?%#[]% ",
                                                                CFStringConvertNSStringEncodingToEncoding(encoding)));
 }
+```
 
 yeah, that's it!
-
-```
 
 ## Include ##
 
