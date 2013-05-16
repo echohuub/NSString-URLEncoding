@@ -56,7 +56,7 @@ Or you can include `#import "NSString+URLEncoding.h"` in your prefix header file
 
 In example, we want to parse UITextView's text which is Markdown to Fanstatical.
 
-Fanstatical URL scheme:
+Fantastical URL scheme:
 `fantastical://parse?sentence=sentence&notes=[your note].`
 
 ```objective-c
