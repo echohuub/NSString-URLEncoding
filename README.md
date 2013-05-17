@@ -37,10 +37,10 @@ Or you can include `#import "NSString+URLEncoding.h"` in your prefix header file
 {
   [super viewDidLoad];
     
-  NSString *someThoughts = @"Some Random Thoughts";
-  NSString *myAwesomeString = @"#What a day#, *I* feel **inspired** and ###motivated###!"; // eg: a markdown string
+  NSString *someThoughts           = @"Some Random Thoughts";
+  NSString *myAwesomeString        = @"#What a day#, *I* feel **inspired** and ###motivated###!"; // eg: a markdown string
 
-  NSString *encodedTitle = [someThoughts stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+  NSString *encodedTitle           = [someThoughts stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
   NSString *myAwesomeEncodedString = [titleString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
 
   UIButton *someButton                    = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 44, 44)];
